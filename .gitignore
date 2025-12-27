@@ -1,3 +1,16 @@
 .DS_Store
 **/.DS_Store
-/public
+/public/
+/resources/_gen/
+hugo_stats.json
+
+hugo.darwin
+hugo.linux
+hugo.exe
+
+/node_modules/
+vendor/
+
+*.swp
+*.swo
+.hugo_build.lock
