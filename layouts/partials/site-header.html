@@ -1,16 +1,37 @@
-<header class="site-header" role="banner">
-  {{/* existing masthead content here */}}
+      {{ if or (not .Paginator) (eq .Paginator.PageNumber 1) }}
+      <div class="ananke-search-wrapper tc-l">
+        <div id="search" class="ananke-search-panel"></div>
+      </div>
+      {{ end }}
 
-  {{ if or (not .Paginator) (eq .Paginator.PageNumber 1) }}
-  <div class="ananke-search-wrapper">
-    <button id="search-toggle"
-            class="ananke-search-toggle"
-            aria-label="Open search">
-      🔍
-    </button>
-    <div id="search" class="ananke-search-panel hidden"></div>
-  </div>
+    </div>
+  </header>
+{{ else }}
+  <header class="relative">
+    <div class="pb3-m pb6-l {{ .Site.Params.background_color_class | compare.Default "bg-black" }}">
+      {{ partials.Include "site-navigation.html" . }}
+      <div class="tc-l pv3 ph3 ph4-ns">
+        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
+          {{ .Title | compare.Default .Site.Title }}
+        </h1>
+        {{ with .Params.description }}
+          <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+            {{ . }}
+          </h2>
+        {{ end }}
+      </div>
 
+      {{ if or (not .Paginator) (eq .Paginator.PageNumber 1) }}
+      <div class="ananke-search-wrapper tc-l">
+        <div id="search" class="ananke-search-panel"></div>
+      </div>
+      {{ end }}
+
+    </div>
+  </header>
+{{ end }}
+
+{{ if or (not .Paginator) (eq .Paginator.PageNumber 1) }}
   <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
   <script src="/pagefind/pagefind-ui.js"></script>
 
@@ -22,21 +43,13 @@
       placeholder: "Search articles"
     });
 
-    const toggle = document.getElementById("search-toggle");
     const panel = document.getElementById("search");
-
-    toggle.onclick = () => panel.classList.toggle("hidden");
 
     document.addEventListener("keydown", e => {
       if (e.key === "/" && !/input|textarea/i.test(e.target.tagName)) {
         e.preventDefault();
-        panel.classList.remove("hidden");
         panel.querySelector("input")?.focus();
-      }
-      if (e.key === "Escape") {
-        panel.classList.add("hidden");
       }
     });
   </script>
-  {{ end }}
-</header>
+{{ end }}
