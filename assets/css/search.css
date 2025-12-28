@@ -1,0 +1,62 @@
+/* Masthead search wrapper */
+.ananke-search-wrapper {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  max-width: 260px;
+}
+
+/* Toggle button */
+.ananke-search-toggle {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.4);
+  border-radius: .25rem;
+  color: #fff;
+  padding: .35rem .5rem;
+  cursor: pointer;
+}
+
+/* Pagefind input */
+.pagefind-ui__search-input {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+}
+
+/* Placeholder */
+.pagefind-ui__search-input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+/* Results dropdown */
+.pagefind-ui__results {
+  background: #fff;
+  border-radius: 0.25rem;
+  margin-top: 0.25rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Result titles */
+.pagefind-ui__result-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #111;
+}
+
+/* Hidden state for toggle */
+.hidden {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 60em) {
+  .ananke-search-wrapper {
+    position: static;
+    margin-top: 1rem;
+    text-align: center;
+  }
+}

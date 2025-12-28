@@ -1,0 +1,2 @@
+{{ $searchCSS := resources.Get "css/search.css" | minify }}
+<link rel="stylesheet" href="{{ $searchCSS.RelPermalink }}">

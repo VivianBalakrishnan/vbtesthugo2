@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "devDependencies": {
+    "pagefind": "^1.4.0"
+  },
+  "scripts": {
+    "build": "hugo && npx pagefind --site public"
+  }
+}

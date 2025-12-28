@@ -1,0 +1,42 @@
+<header class="site-header" role="banner">
+  {{/* existing masthead content here */}}
+
+  {{ if or (not .Paginator) (eq .Paginator.PageNumber 1) }}
+  <div class="ananke-search-wrapper">
+    <button id="search-toggle"
+            class="ananke-search-toggle"
+            aria-label="Open search">
+      🔍
+    </button>
+    <div id="search" class="ananke-search-panel hidden"></div>
+  </div>
+
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+  <script src="/pagefind/pagefind-ui.js"></script>
+
+  <script>
+    const ui = new PagefindUI({
+      element: "#search",
+      showSubResults: false,
+      resetStyles: false,
+      placeholder: "Search articles"
+    });
+
+    const toggle = document.getElementById("search-toggle");
+    const panel = document.getElementById("search");
+
+    toggle.onclick = () => panel.classList.toggle("hidden");
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "/" && !/input|textarea/i.test(e.target.tagName)) {
+        e.preventDefault();
+        panel.classList.remove("hidden");
+        panel.querySelector("input")?.focus();
+      }
+      if (e.key === "Escape") {
+        panel.classList.add("hidden");
+      }
+    });
+  </script>
+  {{ end }}
+</header>
